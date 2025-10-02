@@ -1,0 +1,67 @@
+body {
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    width: 320px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+}
+.avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 4px solid #e0e4ea;
+    transition: border-color 0.2s;
+}
+.card:hover .avatar {
+    border-color: #4f8cff;
+}
+.name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #222;
+}
+.role {
+    font-size: 1rem;
+    color: #4f8cff;
+    margin-bottom: 16px;
+}
+.bio {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.socials a {
+    color: #4f8cff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: color 0.2s;
+}
+.socials a:hover {
+    color: #222;
+}

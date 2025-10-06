@@ -1,5 +1,17 @@
-//import 'dart:ffi';
-//import 'dart:io';
+import 'dart:ffi';
+import 'dart:io';
+
+
+// Function to clear the terminal screen
+void clearTerminal() {
+  if (Platform.isWindows) {
+    // For Windows
+    stdout.write('\x1B[2J\x1B[0;0H');
+  } else {
+    // For Linux and MacOS
+    stdout.write('\x1B[2J\x1B[H');
+  }
+}
 
 String name = 'Ana';
 String nationality = 'Portuguesa';
@@ -23,8 +35,21 @@ int convertStringToInt(String str) {
 
 void countIntegers(){
   for (var i = 0; i <= 20; i++) {
-    if (i == 16) {
+    if (i  == 16) {
+      AssertionError('Erro: O valor 16 nao e permitido.');
       i++;
-    } print(i);
-  }
+    }print(i); 
+  } 
 }
+
+int sum(int a, int b)  =>  a + b;
+
+// void redirectWindow() async {
+//   final Uri url = Uri.parse('https://dart.dev/guides');
+//   if (await canLaunchUrl(url)) {
+//     await launchUrl(url);
+//   } else {
+//     print('Could not launch $url');
+//   }
+// }
+

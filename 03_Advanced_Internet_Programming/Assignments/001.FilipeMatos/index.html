@@ -3,23 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Interactive Profile Card</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    .profile-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        margin: 20px;
+        text-align: center;
+        border-style: dotted;
+        border-width: 2px;
+        border-color: black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .profile-card:hover {
+        transform: scale(1.1);
+        box-shadow: 30px 80px 100px rgba(0, 0, 0, 0.2);
+    }
+    img {
+        border-radius: 5%;
+        margin-bottom: 15px;
+    }
+    h1 {
+        color: sandybrown  
+         }
+    .Name:hover {
+        color: blue;   
+        transition: 1s; 
+    }
+</style>
 <body>
-    <div class="card" tabindex="0">
-        <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture">
-        <div class="name">Filipe Matos</div>
-        <div class="role">Web Developer</div>
-        <div class="bio">
-            Passionate about building interactive web experiences. Loves JavaScript, CSS, and open source.
-        </div>
-        <div class="socials">
-            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </div>
+    <section class="profile-card">
+    <img src="SW_Profile.jpg" alt="Profile Picture" width="200">
+    </section>  
+    <h1 class="Name">Filipe Matos</h1>
+    <h1>Filipe Matos</h1>
 </body>
 </html>

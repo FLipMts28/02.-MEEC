@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   path: ^1.9.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   lints: ^6.0.0

@@ -42,4 +42,21 @@ h2{
 
 }
 
+#taskCreation{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+}
+
+#inputTask{
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    flex: 1;
+
+}
+
 

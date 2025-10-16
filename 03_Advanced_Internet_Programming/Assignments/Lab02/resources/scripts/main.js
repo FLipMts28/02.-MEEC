@@ -7,9 +7,13 @@ import { Task         } from './Task.js';
 const canvas = document.getElementById('displayed-canvas');
 const drawer = new CanvasDrawer(canvas);
 
-const todo = document.getElementById('todo-column');
-const inprogress = document.getElementById('inprogress-column');
-const done = document.getElementById('done-column');
+let todo = document.getElementById('todo-column');
+let inprogress = document.getElementById('inprogress-column');
+let done = document.getElementById('done-column');
+let cards = document.querySelectorAll('.card');
+let dropzones = document.querySelectorAll('.dropzone');
+
+let selected = null;
 
 let tasks =[
     new Task (1, 'Learn about ES Modules','todo'),
@@ -26,9 +30,6 @@ function loadTasks() {
     }
 }
 
-loadTasks();
-renderTasks();
-
 function toJSON(json) {
     return JSON.stringify(json);
 }
@@ -43,15 +44,6 @@ function renderTasks() {
             c.removeChild(c.lastChild);
         }
     });
-    
-
-    const zones = document.getElementById('inprogress-column');
-    zones.addEventListener('dragover', (c) => c.preventDefault());{}
-    zones.addEventListener('drop', (c) => {
-        const card = document.querySelector('.dragging');
-        c.target.appendChild(card);
-        card.classList.remove('dragging');
-    });
 
     tasks.forEach(t => {
         const taskDiv = document.createElement('div');
@@ -59,7 +51,7 @@ function renderTasks() {
         taskDiv.draggable = true;
         taskDiv.textContent = t.text;
 
-        if(t.status === 'todo') {
+        if(t.status == 'todo') {
             todo.appendChild(taskDiv);
         } else if (t.status == 'inprogress') {
             inprogress.appendChild(taskDiv);
@@ -67,25 +59,93 @@ function renderTasks() {
             done.appendChild(taskDiv);
         }
     });
+ 
 }
 
-const addTaskButton = document.getElementById('addTask');
 
-addTaskButton.addEventListener('click', () => {
+/* for (list of cards){
+
+    list.addEventListener("dragstart",function(e){
+        let selected = e.target;
+
+        inprogress.addEventListener("dragover",function(e){
+            e.preventDefault();
+        });
+        inprogress.addEventListener("drop", function(e){
+            inprogress.appendChild(selected);
+            selected = null;                       
+        })
+        todo.addEventListener("dragover",function(e){
+            e.preventDefault();
+        });
+        todo.addEventListener("drop", function(e){
+            todo.appendChild(selected);
+            selected = null;                       
+        })
+        done.addEventListener("dragover",function(e){
+            e.preventDefault();
+        });
+        done.addEventListener("drop", function(e){
+            done.appendChild(selected);
+            selected = null;                       
+        })
+    })       
+}  */
+
+    
+// Add dragstart listener to each card
+    cards.forEach(card => {
+        card.addEventListener("dragstart", function(e) {
+            selected = e.target;
+        });
+    });
+
+    // Common dragover handler
+    function handleDragOver(e) {
+        e.preventDefault();
+    }
+
+    // Common drop handler
+    function handleDrop(e) {
+        e.preventDefault();
+        if (selected) {
+            e.target.appendChild(selected);
+            selected = null;
+        }
+    }
+
+    // Add listeners to drop zones
+    
+// Set up dragover and drop on each dropzone
+    dropzones.forEach(zone => {
+        zone.addEventListener("dragover", function (e) {
+        e.preventDefault(); // Necessary to allow dropping
+        });
+
+        zone.addEventListener("drop", function (e) {
+        e.preventDefault();
+        if (selected) {
+            zone.appendChild(selected);
+            selected = null;
+        }
+    });
+});
+
+    const addTaskButton = document.getElementById('addTask');
+
+    addTaskButton.addEventListener('click', () => {
     const input = document.getElementById('inputTask');
 
     const t = new Task(Date.now(), input.value, 'todo');
     tasks.push(t);
-    //fromJSON(input.value);
-    
+        
     input.value = '';
 
     localStorage.setItem('tasks', toJSON(tasks));
     renderTasks();
+
+
 });
-
-
-console.log(toJSON(tasks));
 
 loadTasks();
 renderTasks();

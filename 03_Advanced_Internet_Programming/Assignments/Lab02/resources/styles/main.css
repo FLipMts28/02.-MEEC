@@ -2,7 +2,7 @@
     border: 1px solid black;
 }
 
-.column {
+.dropzone {
     margin: 20px 10px 10px 20px;
     text-align: left;
     flex: 1;
@@ -23,9 +23,6 @@ h2{
     border: 2px solid black;
     margin: 20px;
     text-align: justify;
-
-
-
 }
 
 #board {
@@ -39,8 +36,9 @@ h2{
     box-shadow: 5px 5px 5px 1px rgb(128, 128, 128, 0.2);
     margin: 20px;
     border-radius: 5px;
+    cursor: grab;
+    }
 
-}
 
 #taskCreation{
     display: flex;
@@ -58,5 +56,4 @@ h2{
     flex: 1;
 
 }
-
 
